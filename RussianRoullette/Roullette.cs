@@ -14,9 +14,8 @@ namespace RussianRoullette
     public partial class Roullette : Form
     {
         Random Rnd = new Random();
-        int shootTimes = 6;//shoot time variable
-        int tryingGun = 2;//sets the value for try the gun
-        public Roullette()
+      //  BulletLooping Obj_Bullet = new BulletLooping();
+       public Roullette()
         {
             InitializeComponent();
         }
@@ -56,15 +55,15 @@ namespace RussianRoullette
             System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(RussianRoullette.Properties.Resources.Shot);//Add sound here
             soundPlayer.Play();//play sound
 
-            if (shootTimes > 0 && BulletLooping.SpinChamber == 1)
+            if (BulletLooping.shootTimes > 0 && BulletLooping.SpinChamber == 1)
             {
-                MessageBox.Show("You loose the Shoot");
+                MessageBox.Show("Try next time, sorry you loose the game");
                 btnFire.Enabled = false;
             }
-            else if (shootTimes > 0 && BulletLooping.SpinChamber != 1)
+            else if (BulletLooping.shootTimes > 0 && BulletLooping.SpinChamber != 1)
             {
-                MessageBox.Show("This is Blank Fire");
-                shootTimes = shootTimes - 1;//minus one from total
+                MessageBox.Show("blank shoot");
+                BulletLooping.shootTimes = BulletLooping.shootTimes - 1;//minus one from total
                 BulletLooping.SpinChamber = BulletLooping.ShootTime(BulletLooping.SpinChamber);
 
             }
